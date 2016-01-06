@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/reset.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+  <form action="/mail" method="post" >
+      <h1>Mail Merge</h1>
+    <section class="left">
+      <p>Enter names / emails (one per line)</p>
+      <textarea name="people" rows="8" cols="40" placeholder="Joe, Jones, joe@example.com"></textarea>
+    </section>
+    <section class="right">
+      <p>
+        Enter the text.  The following substitutions are valid:
+      </p>
+      <ul>
+        <li>{first}</li>
+        <li>{last}</li>
+        <li>{email}</li>
+      </ul>
+      <input type="text" name="subject" value="" placeholder="Subject">
+      <textarea name="contnt" rows="8" cols="40"></textarea>
+      <input type="submit" name="preview" value="Preview">
+    </section>
+  </form>
+
+
+  </body>
+</html>
