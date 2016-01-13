@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var object;
+
+String.prototype.replaceAll = function(find, replace) {
+  return this.replace(new RegExp(find, 'g'), replace);
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,10 +13,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/mail', function(req, res, next){
-  var object ={
+  object ={
     emails: newArray(req.body)
   }
-  res.render('emails', object);
+  res.redirect('show');
+})
+
+router.get('/show', function(req, res, next){
+  object.emails = object.emails.map(function(item){
+    item.content = item.content.replaceAll("{first}", item.first)
+    item.content = item.content.replaceAll("{last}", item.last)
+    item.content = item.content.replaceAll("{email}", item.email)
+    return item;
+  })
+  res.render('emails', object)
 })
 
 module.exports = router;
@@ -31,6 +46,7 @@ function newArray (thing){
   })
   return thisthing;
 }
+
 // {
 //   emails:[
 //     {

@@ -1,14 +1,114 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: auto;
+  width: auto;
 }
 
-a {
-  color: #00B7FF;
+p{
+  margin: 0;
 }
 
-section{
+*{
+  box-sizing: border-box;
+}
+
+h1{
+  font-size: 50px;
+}
+
+form{
+  height: 300px;
+  width: 800px;
+  position: relative;
+}
+
+form section{
   width: 45%;
-  margin-left: 5%;
-  float: left;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+form section textarea, form section input{
+  width: 100%;
+}
+
+form .left textarea {
+  height: 60%;
+  padding: 0;
+  margin: 0;
+}
+form .left p{
+  height: 40%;
+}
+
+form .right .enter{
+  height: 40%;
+  margin: 0;
+}
+
+form .right{
+  margin-left: 9%;
+}
+
+form .right input{
+  height:10%;
+  margin: 0;
+  margin-bottom: 8.5%;
+}
+
+form .right textarea{
+  height: 40%;
+  margin: 0;
+}
+
+button{
+  position:absolute;
+  bottom: -70px;
+  right: .5%;
+  height: 35px;
+  width: 90px;
+  font-size: 20px;
+  border-radius: 0;
+  background-color: #dddddd;
+  border: 1px solid black;
+}
+
+.all-emails{
+  width: 800px;
+  height: auto;
+  margin-top: 75px;
+}
+
+.all-emails h2{
+  font-size: 30px;
+  margin: 10px;
+}
+
+.emails{
+  width: 780px;
+  margin: 10px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.emails p{
+  margin: 10px;
+  font-size: 18px;
+}
+
+p.close{
+  position: absolute;
+  top: -5px;
+  right: 0;
+  font-size: 30px;
+}
+
+.content{
+  border: 1px solid black;
+}
+
+em{
+  font-weight: bold;
 }

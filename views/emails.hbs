@@ -4,43 +4,52 @@
       <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
     </head>
     <body>
+    <h1>Mail Merge</h1>
     <form action="/mail" method="post" >
-        <h1>Mail Merge</h1>
       <section class="left">
         <p>Enter names / emails (one per line)</p>
-        <textarea name="people" rows="8" cols="40" placeholder="Joe, Jones, joe@example.com"></textarea>
+        <textarea name="people" rows="8" cols="40" placeholder="Joe, Jones, joe@example.com">
+          {{#each emails}}
+{{first}}, {{last}}, {{email}}
+          {{/each}}
+        </textarea>
       </section>
       <section class="right">
-        <p>
-          Enter the text.  The following substitutions are valid:
-        </p>
-        <ul>
-          <li>{first}</li>
-          <li>{last}</li>
-          <li>{email}</li>
-        </ul>
-        <input type="text" name="subject" value="" placeholder="Subject">
-        <textarea name="contnt" rows="8" cols="40"></textarea>
-        <input type="submit" name="preview" value="Preview">
+        <div class='enter'>
+          <p>
+            Enter the text.  The following substitutions are valid:
+          </p>
+          <ul>
+            <li>{first}</li>
+            <li>{last}</li>
+            <li>{email}</li>
+          </ul>
+        </div>
+        <input type="text" name="subject" value="{{emails.0.subject}}" placeholder="Subject">
+        <textarea name="contnt" rows="8" cols="40">
+{{emails.0.content}}
+        </textarea>
+        <button type="submit" name="preview" value="Preview">Preview</button>
       </section>
     </form>
-    <section>
-      <h2>Emails: ({{emails.length}})</h2>
+    <section class='all-emails'>
+      <h2 id="num" data-total='{{emails.length}}'>Emails: ({{emails.length}})</h2>
       {{#each emails}}
-        <div>
+        <div class='emails'>
+          <p class="close">X</p>
           <p>
             <em>To:</em> {{first}} {{last}} <{{email}}>
           </p>
           <p>
-            {{subject}}
+            <em>Subject:</em> {{subject}}
           </p>
-          <p>
+          <p class="content">
             {{content}}
           </p>
         </div>
       {{/each}}
     </section>
-
+    <script src="/javascripts/code.js" charset="utf-8"></script>
     </body>
   </html>
 
